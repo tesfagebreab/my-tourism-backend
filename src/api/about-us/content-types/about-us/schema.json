@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "about_uses",
+  "info": {
+    "singularName": "about-us",
+    "pluralName": "about-uses",
+    "displayName": "About-us"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "our_values": {
+      "type": "blocks"
+    },
+    "featured_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.metadata",
+      "repeatable": true
+    },
+    "domain": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::domain.domain",
+      "inversedBy": "about_us"
+    },
+    "hero_title": {
+      "type": "string"
+    },
+    "hero_subtitle": {
+      "type": "text"
+    },
+    "founder_philosophy": {
+      "type": "text"
+    },
+    "trust_banner": {
+      "type": "component",
+      "component": "trust-banner.trust-banner",
+      "repeatable": false
+    }
+  }
+}

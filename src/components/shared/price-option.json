@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_shared_price_options",
+  "info": {
+    "displayName": "Price_Option"
+  },
+  "options": {},
+  "attributes": {
+    "Currency": {
+      "type": "enumeration",
+      "enum": [
+        "USD",
+        "ETB (Ethiopian Birr)",
+        "EUR"
+      ]
+    },
+    "Amount": {
+      "type": "decimal"
+    },
+    "Pricing_Unit": {
+      "type": "enumeration",
+      "enum": [
+        "Per_Person"
+      ]
+    }
+  },
+  "config": {}
+}

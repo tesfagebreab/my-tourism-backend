@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_price_pricing_tiers",
+  "info": {
+    "displayName": "Pricing Tiers"
+  },
+  "options": {},
+  "attributes": {
+    "tier_1": {
+      "type": "decimal"
+    },
+    "tier_2_3": {
+      "type": "decimal"
+    },
+    "tier_4_10": {
+      "type": "decimal"
+    },
+    "tier_11_plus": {
+      "type": "decimal"
+    }
+  },
+  "config": {}
+}

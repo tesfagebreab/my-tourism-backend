@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tags",
+  "info": {
+    "singularName": "tag",
+    "pluralName": "tags",
+    "displayName": "Tag"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "tours": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tour.tour",
+      "inversedBy": "tags"
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Title"
+    },
+    "SEO": {
+      "type": "component",
+      "component": "shared.metadata",
+      "repeatable": true
+    }
+  }
+}

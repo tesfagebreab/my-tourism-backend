@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "types",
+  "info": {
+    "singularName": "type",
+    "pluralName": "types",
+    "displayName": "Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "tours": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tour.tour",
+      "mappedBy": "types"
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Title"
+    },
+    "SEO": {
+      "type": "component",
+      "component": "shared.metadata",
+      "repeatable": true
+    },
+    "homepages": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::homepage.homepage",
+      "mappedBy": "featured_types"
+    },
+    "featured_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

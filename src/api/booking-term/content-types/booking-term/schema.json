@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "booking_terms",
+  "info": {
+    "singularName": "booking-term",
+    "pluralName": "booking-terms",
+    "displayName": "Booking_Term"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "domain": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::domain.domain",
+      "inversedBy": "booking_term"
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.metadata",
+      "repeatable": false
+    }
+  }
+}

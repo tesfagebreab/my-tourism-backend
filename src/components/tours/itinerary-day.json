@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_tours_itinerary_days",
+  "info": {
+    "displayName": "ItineraryDay"
+  },
+  "options": {},
+  "attributes": {
+    "DayTitle": {
+      "type": "string"
+    },
+    "Activities": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}

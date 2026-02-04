@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "homepages",
+  "info": {
+    "singularName": "homepage",
+    "pluralName": "homepages",
+    "displayName": "Homepage",
+    "description": "Content for brand homepages"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "domain": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::domain.domain",
+      "mappedBy": "homepage"
+    },
+    "Hero_Title": {
+      "type": "string",
+      "required": true
+    },
+    "Hero_Subtitle": {
+      "type": "text"
+    },
+    "Founder_Philosophy": {
+      "type": "text"
+    },
+    "hero_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "featured_tours": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tour.tour",
+      "inversedBy": "homepages"
+    },
+    "featured_types": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::type.type",
+      "inversedBy": "homepages"
+    },
+    "SEO": {
+      "type": "component",
+      "component": "shared.metadata",
+      "repeatable": false
+    },
+    "TrustBanner": {
+      "type": "component",
+      "component": "trust-banner.trust-banner",
+      "repeatable": false
+    }
+  }
+}

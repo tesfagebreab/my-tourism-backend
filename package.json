@@ -1,0 +1,38 @@
+{
+  "name": "my-tourism-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Strapi application",
+  "scripts": {
+    "build": "strapi build",
+    "console": "strapi console",
+    "deploy": "strapi deploy",
+    "dev": "strapi develop",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "strapi": "strapi",
+    "upgrade": "npx @strapi/upgrade latest",
+    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+  },
+  "dependencies": {
+    "@strapi/plugin-cloud": "5.33.3",
+    "@strapi/plugin-users-permissions": "5.33.3",
+    "@strapi/provider-upload-aws-s3": "^5.34.0",
+    "@strapi/strapi": "5.33.3",
+    "better-sqlite3": "12.4.1",
+    "path-browserify": "^1.0.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "sharp": "^0.34.5",
+    "styled-components": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0 <=24.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "3b2d367a-90cf-483d-8777-6b49ef7718d3",
+    "installId": "db619a673d915b0c62343eb3a9b8b1d3bd0555d9e54ccadb5cb38e1304a54222"
+  }
+}
