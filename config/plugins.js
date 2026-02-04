@@ -1,21 +1,33 @@
 module.exports = ({ env }) => ({
+  // FIX 1: Add the users-permissions block
+  'users-permissions': {
+    config: {
+      jwtSecret: env('JWT_SECRET'),
+    },
+  },
   upload: {
     config: {
-      provider: '@strapi/provider-upload-aws-s3',
+      provider: 'aws-s3', // Use the standard name
       providerOptions: {
-        credentials: {
-          accessKeyId: env('CF_ACCESS_KEY_ID'),
-          secretAccessKey: env('CF_ACCESS_SECRET'),
+        // FIX 2: Wrap credentials/region/endpoint inside s3Options
+        s3Options: {
+          credentials: {
+            accessKeyId: env('CF_ACCESS_KEY_ID'),
+            secretAccessKey: env('CF_ACCESS_SECRET'),
+          },
+          region: 'auto',
+          endpoint: env('CF_ENDPOINT'),
+          forcePathStyle: true,
         },
-        region: 'auto',
-        // R2 endpoints should not have the bucket name in them for the SDK
-        endpoint: env('CF_ENDPOINT'), 
         params: {
           Bucket: env('CF_BUCKET'),
         },
-        s3ForcePathStyle: true,
-        // This is the key that tells Strapi "Don't use localhost, use my domain"
-        baseUrl: env('CF_PUBLIC_ACCESS_URL', 'https://media.gheraltatours.com'),
+      },
+      // This ensures your images use your public R2 domain
+      actionOptions: {
+        upload: {},
+        uploadStream: {},
+        delete: {},
       },
     },
   },
