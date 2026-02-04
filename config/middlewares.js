@@ -44,23 +44,24 @@ export default ({ env }) => [
     },
   },
   {
-    name: 'strapi::cors',
-    config: {
-      // Add your Railway and Custom domains here
-      origin: [
-        'http://localhost:3000', 
-        'http://127.0.0.1:3000', 
-        'https://gheraltatours.com',
-        'https://gheraltaadventures.com',
-        'https://abuneyemata.com',
-        // This wildcards any subdomain Railway gives you
-        /\.railway\.app$/ 
-      ],
-      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
-      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
-      keepHeaderOnError: true,
-    },
+  name: 'strapi::cors',
+  config: {
+    origin: [
+      'http://localhost:3000', 
+      'http://localhost:8080', // Added this since your app logs show 8080
+      'https://gheraltatours.com',
+      'https://www.gheraltatours.com', // Always add the www version
+      'https://gheraltaadventures.com',
+      'https://www.gheraltaadventures.com',
+      'https://abuneyemata.com',
+      'https://www.abuneyemata.com',
+      /\.railway\.app$/ 
+    ],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
+    headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
+    keepHeaderOnError: true,
   },
+},
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
