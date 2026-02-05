@@ -1,5 +1,4 @@
 module.exports = ({ env }) => ({
-  // FIX 1: Add the users-permissions block
   'users-permissions': {
     config: {
       jwtSecret: env('JWT_SECRET'),
@@ -7,13 +6,12 @@ module.exports = ({ env }) => ({
   },
   upload: {
     config: {
-      provider: 'aws-s3', // Use the standard name
+      provider: 'aws-s3',
       providerOptions: {
-        // FIX 2: Wrap credentials/region/endpoint inside s3Options
         s3Options: {
           credentials: {
             accessKeyId: env('CF_ACCESS_KEY_ID'),
-            secretAccessKey: env('CF_ACCESS_SECRET'),
+            accessSecretKey: env('CF_ACCESS_SECRET'), // Double-check if your env matches this name
           },
           region: 'auto',
           endpoint: env('CF_ENDPOINT'),
@@ -23,12 +21,16 @@ module.exports = ({ env }) => ({
           Bucket: env('CF_BUCKET'),
         },
       },
-      // This ensures your images use your public R2 domain
+      // ADD THIS SECTION BELOW
       actionOptions: {
         upload: {},
         uploadStream: {},
         delete: {},
       },
+      // THIS IS THE MISSING KEY:
+      // It ensures the API returns the public URL so the frontend can see the images
+      settings: {
+baseUrl: 'https://media.gheraltatours.com',      },
     },
   },
 });
