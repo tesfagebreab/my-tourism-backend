@@ -7,7 +7,8 @@ export default ({ env }) => [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'https:', 'pub-9ff861aa5ec14578b94dca9cd38e3f70.r2.dev'],
+          // CHANGE 1: Added explicit https for your R2 bucket
+          'connect-src': ["'self'", 'https:', 'https://pub-9ff861aa5ec14578b94dca9cd38e3f70.r2.dev'],
           'img-src': [
             "'self'",
             'data:',
@@ -44,24 +45,25 @@ export default ({ env }) => [
     },
   },
   {
-  name: 'strapi::cors',
-  config: {
-    origin: [
-      'http://localhost:3000', 
-      'http://localhost:8080', // Added this since your app logs show 8080
-      'https://gheraltatours.com',
-      'https://www.gheraltatours.com', // Always add the www version
-      'https://gheraltaadventures.com',
-      'https://www.gheraltaadventures.com',
-      'https://abuneyemata.com',
-      'https://www.abuneyemata.com',
-      /\.railway\.app$/ 
-    ],
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
-    headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
-    keepHeaderOnError: true,
+    name: 'strapi::cors',
+    config: {
+      // CHANGE 2: Added 8080 and ALL www versions of your domains
+      origin: [
+        'http://localhost:3000',
+        'http://localhost:8080', 
+        'https://gheraltatours.com',
+        'https://www.gheraltatours.com',
+        'https://gheraltaadventures.com',
+        'https://www.gheraltaadventures.com',
+        'https://abuneyemata.com',
+        'https://www.abuneyemata.com',
+        /\.railway\.app$/ 
+      ],
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
+      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
+      keepHeaderOnError: true,
+    },
   },
-},
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
