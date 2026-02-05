@@ -6,31 +6,21 @@ module.exports = ({ env }) => ({
   },
   upload: {
     config: {
-      provider: 'aws-s3',
+      provider: 'strapi-provider-upload-cloudflare-r2',
       providerOptions: {
-        s3Options: {
-          credentials: {
-            accessKeyId: env('CF_ACCESS_KEY_ID'),
-            accessSecretKey: env('CF_ACCESS_SECRET'), // Double-check if your env matches this name
-          },
-          region: 'auto',
-          endpoint: env('CF_ENDPOINT'),
-          forcePathStyle: true,
-        },
+        accessKeyId: env('CF_ACCESS_KEY_ID'),
+        secretAccessKey: env('CF_ACCESS_SECRET'), // Fixed typo: was accessSecretKey
+        endpoint: env('CF_ENDPOINT'),
         params: {
           Bucket: env('CF_BUCKET'),
         },
+        cloudflarePublicAccessUrl: env('CF_PUBLIC_ACCESS_URL'),
       },
-      // ADD THIS SECTION BELOW
       actionOptions: {
         upload: {},
         uploadStream: {},
         delete: {},
       },
-      // THIS IS THE MISSING KEY:
-      // It ensures the API returns the public URL so the frontend can see the images
-      settings: {
-baseUrl: 'https://media.gheraltatours.com',      },
     },
   },
 });
